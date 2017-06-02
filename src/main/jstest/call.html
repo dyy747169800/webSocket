@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+<script>
+    //    var flag = false, start = (new Date()).getTime();
+    //    //普通实现 1
+    //    function fun1() {
+    //        //flag状态会在其他地方修改，当满足条件后执行相应逻辑
+    //        if (flag) {
+    //            // do something
+    //            return;
+    //        }
+    //        //超过等待时间，放弃
+    //        if ((new Date()).getTime() - start > 3000) {
+    //            return;
+    //        }
+    //        //等待一秒后重试
+    //        setTimeout(fun1, 1000);
+    //    }
+    //    fun1();
+    //    //普通实现 2
+    //    function fun2() {
+    //        if (flag) {
+    //            // do something
+    //            clearInterval(handler);
+    //            return;
+    //        }
+    //        if ((new Date()).getTime() - start > 3000) {
+    //            clearInterval(handler);
+    //            return;
+    //        }
+    //    }
+    //    var handler = setInterval(func2, 1000);
+    //    // 匿名函数实现
+    //    (function () {
+    //        if (flag) {
+    //            //do something
+    //            return;
+    //        }
+    //        if ((new Date()).getTime() - start > 3000) {
+    //            return;
+    //        }
+    //        setTimeout(arguments.callee, 1000);
+    //    })();
+//    function fun2(n) {
+//        if (n > 1) {
+//            return n * fun2(n - 1);
+//        }
+//        return 1;
+//    }
+//
+//    var r1 = fun2(3);
+
+//(function (n) {
+//    if (n > 1) {
+//        return n * arguments.callee(n - 1);
+//    }
+//    return 1;
+//})(4)
+
+
+
+//    (function (n) {
+//        if (n > 1) {
+//            return n * arguments.callee(n - 1);
+//        }
+//        return 1;
+//    })(3);
+
+//
+//    (function (n) {
+//        if(n > 1){
+//           console.log(n);
+//           return arguments.callee(n-1);
+//        }
+//        console.log(1);
+//    })(5)
+    window.alert = function (obj) {
+        console.log(obj);
+    }
+
+    //对于布尔值只要有一个false，就返回false；
+    var obj={};   var a=(false && obj); alert(a); //false
+    var obj={};   var a=(obj && false); alert(a); //false
+
+    // 如果有一个操作数是null，则返回null
+    var obj={};   var a=(obj && null); alert(a); //null
+    var obj={};   var a=(null && obj); alert(a); //null
+
+    // 如果有一个操作数是NaN，则返回第NaN
+    var obj={};   var a=(NaN && obj ); alert(a); //NaN
+    var obj={};   var a=(obj && NaN); alert(a); //NaN
+
+    //如果有一个操作数是undefined，则返回unfined
+    var obj={};   var a=(undefined && obj); alert(a); //undefined
+    var obj={};   var a=(obj && undefined); alert(a); //undefined
+
+    //如果第二个操作数是对象，则只有在第一个操作数的求值结果为true的情况下才会返回该对象;
+    var obj={};   var a=(true && obj); alert(a == obj) //true
+    var obj={};   var a=(false && obj); alert(a == obj) //false
+
+    // 如果第一个操作数是对象，则返回第二个数;
+    var obj={};   var a=(obj && undefined); alert(a); //undefined
+    var obj={};   var a=(obj && null); alert(a); //null
+    var obj={};   var a=(obj && false); alert(a); //false
+    var obj={};   var a=(obj && NaN); alert(a); //NaN
+
+    // 如果第两个操作数都是对象，则返回第二个数操作数
+    var obj={};  var obj2={} ;  var a=(obj && obj2); alert(a==obj2);//true
+
+    // 如果第两个操作数都是对象，则返回第二个数操作数
+    var obj={};  var obj2={} ;  var a=(obj || obj2); alert(a==obj2);//true
+
+
+</script>
+</html>
